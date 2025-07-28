@@ -1,0 +1,4 @@
+# [cluster] from inventory, ip, hostname
+# Answer: pong
+
+ansible cluster -m ping
