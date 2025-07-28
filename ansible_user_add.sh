@@ -15,6 +15,6 @@ usermod -aG sudo "$USERNAME"
 # usermod -aG wheel "$USERNAME"
 
 chown -R "$USERNAME:$USERNAME" /home/"$USERNAME"
-chown 755 /home/"$USERNAME"
+chmod 755 /home/"$USERNAME"
 
 echo "User $USERNAME is ready!"
