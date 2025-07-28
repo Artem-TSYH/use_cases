@@ -1,0 +1,5 @@
+# Each VM should have its own hostname
+
+sudo hostnamectl set-hostname controlplane
+
+sudo vi /etc/hosts
