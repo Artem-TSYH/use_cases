@@ -1,0 +1,17 @@
+---
+- name: Install requierd APT packages
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install apt-transport-https, ca-certificates, curl
+      ansible.builtin.apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+        state: present
