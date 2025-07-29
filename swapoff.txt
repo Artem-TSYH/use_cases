@@ -1,0 +1,13 @@
+# Manuell
+
+sudo swapoff -a
+
+sudo sed -i '/\sswap\s/s/^/#/' /etc/fstab
+
+# Check
+
+swapon --summary
+
+sudo cat /etc/fstab
+
+# swapon -a
