@@ -1,0 +1,14 @@
+---
+- name: Disable swap on VMS
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Turn off swap
+      ansible.builtin.command: swapoff -a
+
+    - name: Comment out swap in /etc/fstab
+      ansible.builtin.replace:
+        path: /etc/fstab
+        regexp: '^(\s*\S+\s+\S+\s+swap\s+\S+.*)$'
+        replace: '# \1'
+        backup: true # Delete after checking
