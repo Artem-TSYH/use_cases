@@ -17,4 +17,8 @@ usermod -aG sudo "$USERNAME"
 chown -R "$USERNAME:$USERNAME" /home/"$USERNAME"
 chmod 755 /home/"$USERNAME"
 
+echo "ansible-user ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/ansible-user > /dev/null
+
+sudo chmod 0440 /etc/sudoers.d/ansible-user
+
 echo "User $USERNAME is ready!"
