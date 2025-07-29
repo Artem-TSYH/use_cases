@@ -1,0 +1,16 @@
+---
+- name: Copy SSH key (if not present on VM)
+  hosts: cluster
+  gather_facts: false
+  vars:
+    ansible_user: ansible-user
+    ansible_ssh_pass: ansible
+  tasks:
+    - name: Install SSH key using authorized_key module
+      ansible.posix.authorized_key:
+        user: "{{ ansible_user }}"
+        state: present
+        key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
+      become: true
+      vars:
+        ansible_become_pass: "{{ ansible_ssh_pass }}"
