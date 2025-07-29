@@ -6,3 +6,9 @@ https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key
     user: ubuntu
     state: present
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+# Manuell
+ssh-keygen -t rsa
+ssh-copy-id ansible-user@192.168.0.0
+# Test
+ssh ansible-user@1192.168.0.0
