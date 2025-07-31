@@ -23,7 +23,9 @@ chmod +x ssh_install.sh
 
 sudo ./ssh_install.sh
 
-## 
+## EXTRA. Ansible. Time for Playbook-Execution
+/usr/bin/time -f "\nElapsed time: %E" ansible-playbook -i inventory.ini modules_boot.yaml
+
 
 #
 
