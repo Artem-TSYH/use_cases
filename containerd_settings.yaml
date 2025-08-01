@@ -1,0 +1,30 @@
+---
+- name: Settings for ContainerD
+  hosts: cluster
+  gather_facts: false
+  become: true
+  tasks:
+    - name: New pause-image
+      ansible.builtin.command: ctr images pull registry.k8s.io/pause:3.10
+
+    - name: Directory for configuration-file
+      ansible.builtin.file:
+        path: /etc/containerd
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: File with configuration
+      ansible.builtin.template:
+        src: config.toml.j2
+        dest: /etc/containerd/config.toml
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: ContainerD-Restart
+      ansible.builtin.systemd:
+        name: containerd
+        state: restarted
+        enabled: true
