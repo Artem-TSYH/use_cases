@@ -1,5 +1,6 @@
 # /etc/netplan
-# 99-ccnet.yaml
+# sudo vi 99-ccnet.yaml
+# chmod 600 99-ccnet.yaml
 
 network:
     ethernets:
@@ -12,3 +13,5 @@ network:
             nameservers:
               addresses: [192.168.0.1]
     version: 2
+
+# sudo netplan apply
