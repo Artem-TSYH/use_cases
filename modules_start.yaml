@@ -1,0 +1,10 @@
+---
+- name: Start modules br_netfilter, overlay
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Start modules (modprobe)
+      ansible.builtin.command: modprobe {{ item }}
+      loop:
+        - br_netfilter
+        - overlay
